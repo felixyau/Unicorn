@@ -3,8 +3,8 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .serializers import ProductSerializer
-from .models import Product
+from .serializers import ProductSerializer, QuestionSerializer, UserResponseSerializer
+from .models import Product, Questions, UserResponse
 
 
 # Create your views here.
@@ -65,3 +65,32 @@ def deleteProduct(request, pk):
 
     return Response('Items delete successfully!')
 
+
+#getting questions as json
+@api_view(['GET'])
+def getQuestions(request):
+    questions = Questions.objects.all()
+    serializer = QuestionSerializer(questions, many=True)
+    return Response(serializer.data)
+
+@api_view(['POST'])
+def createQuestions(request):
+    serializer = QuestionSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+
+
+    return Response(serializer.data)
+
+#ML model 
+@api_view(['POST'])
+def diagnoseUser(request):
+    serializer = UserResponseSerializer(data=request.data)
+
+    if serializer.is_valid():
+        serializer.save()
+        #can add ML process here
+        return Response("isvalid")
+    return Response(serializer.data)
+#can return ML result
