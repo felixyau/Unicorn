@@ -3,8 +3,10 @@ from django.shortcuts import render
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
-from .serializers import ProductSerializer, QuestionSerializer, UserResponseSerializer
-from .models import Product, Questions, UserResponse
+# from .serializers import ProductSerializer, QuestionSerializer, UserResponseSerializer
+# from .models import Product, Questions, UserResponse
+from .serializers import QuestionSerializer, UserResponseSerializer
+from .models import Questions, UserResponse
 
 
 # Create your views here.
@@ -21,49 +23,49 @@ def apiOverview(request):
     return Response(api_urls);
 """
 
-@api_view(['GET'])
-def ShowAll(request):
-    products = Product.objects.all()
-    serializer = ProductSerializer(products, many=True)
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def ShowAll(request):
+#     products = Product.objects.all()
+#     serializer = ProductSerializer(products, many=True)
+#     return Response(serializer.data)
 
 
-@api_view(['GET'])
-def ViewProduct(request, pk):
-    product = Product.objects.get(id=pk)
-    serializer = ProductSerializer(product, many=False)
-    print(serializer.data)
-    return Response(serializer.data)
-
-
-
-@api_view(['POST'])
-def CreateProduct(request):
-    serializer = ProductSerializer(data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-
-    return Response(serializer.data)
+# @api_view(['GET'])
+# def ViewProduct(request, pk):
+#     product = Product.objects.get(id=pk)
+#     serializer = ProductSerializer(product, many=False)
+#     print(serializer.data)
+#     return Response(serializer.data)
 
 
 
-@api_view(['POST'])
-def updateProduct(request, pk):
-    product = Product.objects.get(id=pk)
-    serializer = ProductSerializer(instance=product, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
+# @api_view(['POST'])
+# def CreateProduct(request):
+#     serializer = ProductSerializer(data=request.data)
 
-    return Response(serializer.data)
+#     if serializer.is_valid():
+#         serializer.save()
+
+#     return Response(serializer.data)
 
 
-@api_view(['GET'])
-def deleteProduct(request, pk):
-    product = Product.objects.get(id=pk)
-    product.delete()
 
-    return Response('Items delete successfully!')
+# @api_view(['POST'])
+# def updateProduct(request, pk):
+#     product = Product.objects.get(id=pk)
+#     serializer = ProductSerializer(instance=product, data=request.data)
+#     if serializer.is_valid():
+#         serializer.save()
+
+#     return Response(serializer.data)
+
+
+# @api_view(['GET'])
+# def deleteProduct(request, pk):
+#     product = Product.objects.get(id=pk)
+#     product.delete()
+
+#     return Response('Items delete successfully!')
 
 
 #getting questions as json
