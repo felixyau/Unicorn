@@ -1,11 +1,8 @@
 # Unicorn - Your Personal Health Assistant
 
--------
+
 <p align="center">
     <a href="#Introduction">Appearance</a> &bull;
-    <a href="#motivation">Motivation</a> &bull;
-    <a href="#posts">Posts</a> &bull;
-    <a href="#installation">Installation</a>
 </p>
 -------
 Unicorn is a platform where we provide smart health technology, including 247 health monitoring, prediagnosis machine learning model and Healthipedia, a health information database.
