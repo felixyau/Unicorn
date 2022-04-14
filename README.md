@@ -35,9 +35,6 @@ For the API we will just use the Django Rest API.
   - yarn dev 
 <br  /><br  /><br  />
 
-- Server/API
-<br  /><br  /><br  />
-
 ## UI/Prototype
 https://www.figma.com/proto/YEYjpb1YpqzzzxfO4YdsBO/unicorn_2?page-id=0%3A1&node-id=101%3A682&viewport=241%2C48%2C0.08&scaling=scale-down&starting-point-node-id=101%3A682
 <br  /><br  /><br  />
