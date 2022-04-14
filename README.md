@@ -7,9 +7,12 @@ Unicorn is a platform where we provide smart health technology, including 247 he
 ## Main Features
 - Prediagnosis machine learning model
 
+
 - health dashboard
+A dashboard that allows data import from health devices, e.g. smart watches, summarising health data for constant monitoring and recording.
 
 - Healthipedia
+A Health database to power the other functions. We filter trustworthy and valid information for generating medical advices and suggestions.
 
 ## Tech Stack
 - Frontend 
@@ -17,18 +20,19 @@ We decided to use React because of its massive community support and popularity.
 
 - Backend
 We will use Django to integrate with our Machine Learning model. We have not held down any type of database to use. In terms of scalability and cost-efficiency, we will integrate our server with cloud providers like AWS. 
-For the API we will just use the traditional Rest API.
 
+For the API we will just use the Django Rest API.
 
 
 ## Installation
 
-- Website
+###- Website
 
 
-- Server
+###- Server
 
-
+## UI/Prototype
+https://www.figma.com/file/YEYjpb1YpqzzzxfO4YdsBO/unicorn_2?node-id=0%3A1
 
 ## Code Structure
 
