@@ -18,10 +18,10 @@ For the API we will just use the traditional Rest API.
 
 ## Installation
 
-# Website
+- Website
 
 
-# Server
+- Server
 
 
 
