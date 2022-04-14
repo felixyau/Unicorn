@@ -2,12 +2,13 @@ import { NextPage } from "next";
 import { useState } from "react";
 import { Formik } from "formik";
 import ButtonGroup from "./components/ButtonGroup";
-import Questions from "./questions";
+import Questions from "./question";
 import FormControl from "./components/FormControl";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUp, faArrowDown } from "@fortawesome/free-solid-svg-icons";
 import img from "../public/cover.jpg";
 import Image from "next/image";
+import Link from "next/link";
 
 type Props = {};
 
@@ -26,7 +27,7 @@ const getClassName = (activeStep: number, questionNumber: number) => {
 };
 
 const Form: NextPage = (props: Props) => {
-  const totalStep = 10;
+  const totalStep = Questions.length;
 
   const initialValues: MyFormValues = { firstName: "" };
   const [step, setStep] = useState(1);
@@ -44,36 +45,35 @@ const Form: NextPage = (props: Props) => {
         >
           {() => (
             <form className="w-full lg:ml-16 relative top-1/2 -translate-y-1/2">
-              <FormControl
-                label={Questions[0].q}
-                number="1"
-                className={getClassName(step, 1)}
-              >
-                <ButtonGroup
-                  options={Questions[1].options}
-                  nextStep={nextStep}
-                />
-              </FormControl>
-
-              <FormControl
-                label={Questions[1].q}
-                number="2"
-                className={getClassName(step, 2)}
-              >
-                <ButtonGroup
-                  options={Questions[1].options}
-                  nextStep={nextStep}
-                />
-              </FormControl>
+              {Questions.map((question, index) => (
+                <FormControl
+                  label={Questions[0].q}
+                  number={(index + 1).toString()}
+                  className={getClassName(step, index + 1)}
+                >
+                  <ButtonGroup
+                    options={Questions[index].options}
+                    nextStep={nextStep}
+                  />
+                </FormControl>
+              ))}
+              {step === Questions.length+1 && <Link href="/result">
+                <div className="w-3/12 mb-4 rounded-xl bg-white p-4 shadow-md transition duration-100 active:scale-75 active:shadow-lg">
+                  Submit the Form
+                </div>
+              </Link>}
             </form>
           )}
         </Formik>
 
         <div className="flex items-end justify-between fixed bottom-4 left-0 right-0 w-full pr-8 pl-8">
           <div>
-            <p>{(step / totalStep * 100)}% completed</p>
+            <p>{Math.floor(((step - 1) / totalStep) * 100)}% completed</p>
             <div className="bg-gray-400 w-72 h-1 mb-6">
-              <div className="h-1 bg-gray-800" style={{width:`${(step / totalStep) * 100}%`}}></div>
+              <div
+                className="h-1 bg-gray-800"
+                style={{ width: `${(step / totalStep) * 100}%` }}
+              ></div>
             </div>
           </div>
           <div>

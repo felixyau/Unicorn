@@ -1,25 +1,25 @@
 const Questions = [
-    {
-        q: "Select your symptom",
-        options: [
-          {
-            label: "Headache",
-            value: "headache",
-          },
-          {
-            label: "Dizziness",
-            value: "dizziness",
-          },
-          {
-            label: "Loss of balance",
-            value: "lossOfBalance",
-          },
-          {
-            label: "Others",
-            value: "others",
-          },
-        ],
+  {
+    q: "Select your symptom",
+    options: [
+      {
+        label: "Headache",
+        value: "headache",
       },
+      {
+        label: "Dizziness",
+        value: "dizziness",
+      },
+      {
+        label: "Loss of balance",
+        value: "lossOfBalance",
+      },
+      {
+        label: "Others",
+        value: "others",
+      },
+    ],
+  },
 
   {
     q: "Can we access your health record?",
@@ -86,7 +86,6 @@ const Questions = [
       },
     ],
   },
-
 
   {
     q: "Are you experiencing sweating during rest?",
@@ -171,7 +170,6 @@ const Questions = [
       },
     ],
   },
-
 ];
 
 export default Questions;
