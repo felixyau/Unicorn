@@ -15,10 +15,17 @@ For the backend, we will use Django to integrate with our Machine Learning model
 For the API we will just use the traditional Rest API.
 
 
-How to read the project
+
+## Installation
+
+# Website
 
 
-How to run the project
+# Server
 
 
-Challenges/future development
+
+## Code Structure
+
+
+## Challenges/Future Development
