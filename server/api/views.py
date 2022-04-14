@@ -7,66 +7,29 @@ from rest_framework.decorators import api_view
 # from .models import Product, Questions, UserResponse
 from .serializers import QuestionSerializer, UserResponseSerializer
 from .models import Questions, UserResponse
+from .ML import knn_model
+import joblib
+import json
+
 
 
 # Create your views here.
 
-"""@api_view(['GET'])
-def apiOverview(request):
-    api_urls = {
-        'List': '/product-list/',
-        'Detail View': '/product-detail/<int:id>/',
-        'Create': '/product-create/',
-        'Update': '/product-update/<int:id>/',
-        'Delete': '/product-detail/<int:id>/',
-    }
-    return Response(api_urls);
-"""
 
-# @api_view(['GET'])
-# def ShowAll(request):
-#     products = Product.objects.all()
-#     serializer = ProductSerializer(products, many=True)
-#     return Response(serializer.data)
+def process(userResponse):
+    #dic = json.loads(userResponse)
 
+    dic = userResponse
+    ls = []
 
-# @api_view(['GET'])
-# def ViewProduct(request, pk):
-#     product = Product.objects.get(id=pk)
-#     serializer = ProductSerializer(product, many=False)
-#     print(serializer.data)
-#     return Response(serializer.data)
-
-
-
-# @api_view(['POST'])
-# def CreateProduct(request):
-#     serializer = ProductSerializer(data=request.data)
-
-#     if serializer.is_valid():
-#         serializer.save()
-
-#     return Response(serializer.data)
-
-
-
-# @api_view(['POST'])
-# def updateProduct(request, pk):
-#     product = Product.objects.get(id=pk)
-#     serializer = ProductSerializer(instance=product, data=request.data)
-#     if serializer.is_valid():
-#         serializer.save()
-
-#     return Response(serializer.data)
-
-
-# @api_view(['GET'])
-# def deleteProduct(request, pk):
-#     product = Product.objects.get(id=pk)
-#     product.delete()
-
-#     return Response('Items delete successfully!')
-
+    for i,j in dic.items():
+        dic[i] = int(dic[i])
+        ls.append(dic[i])
+    
+        
+    result = knn_model.predict(ls[0],ls[1],ls[2],ls[3],ls[4],ls[5],ls[6],ls[7],ls[8],ls[9],ls[10])
+    
+    return result
 
 #getting questions as json
 @api_view(['GET'])
@@ -93,6 +56,8 @@ def diagnoseUser(request):
     if serializer.is_valid():
         serializer.save()
         #can add ML process here
+        r = process(request.data)
         return Response("isvalid")
     return Response(serializer.data)
 #can return ML result
+
