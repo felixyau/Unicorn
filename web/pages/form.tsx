@@ -26,7 +26,7 @@ const getClassName = (activeStep: number, questionNumber: number) => {
   else return goesDown;
 };
 
-const Form: NextPage = (props: Props) => {
+const Form = (props: Props) => {
   const totalStep = Questions.length;
 
   const initialValues: MyFormValues = { firstName: "" };
@@ -47,7 +47,7 @@ const Form: NextPage = (props: Props) => {
             <form className="w-full lg:ml-16 relative top-1/2 -translate-y-1/2">
               {Questions.map((question, index) => (
                 <FormControl
-                  label={Questions[0].q}
+                  label={Questions[index].q}
                   number={(index + 1).toString()}
                   className={getClassName(step, index + 1)}
                 >
@@ -82,8 +82,9 @@ const Form: NextPage = (props: Props) => {
               onClick={() => setStep((step) => step - 1)}
             >
               <FontAwesomeIcon
-                className="text-3xl text-white"
+                className="text-white"
                 icon={faArrowUp}
+                style={{fontSize:"18px", maxWidth:"100%"}}
               />
             </button>
             <button
@@ -91,8 +92,9 @@ const Form: NextPage = (props: Props) => {
               onClick={() => setStep((step) => step + 1)}
             >
               <FontAwesomeIcon
-                className="text-3xl text-white"
+                className="text-white"
                 icon={faArrowDown}
+                style={{fontSize:"18px", maxWidth:"100%"}}
               />
             </button>
           </div>
