@@ -41,7 +41,9 @@ https://www.figma.com/file/YEYjpb1YpqzzzxfO4YdsBO/unicorn_2?node-id=0%3A1
 <br  /><br  /><br  />
 
 ## Code Structure
+`Unicorn\web'`include the frontend components.
 
+`Unicorn\server` includes the backend components. You can find `\server` that includes the django project and application `\api` for request handling.
 <br  /><br  /><br  />
 ## Challenges/Future Development
 
